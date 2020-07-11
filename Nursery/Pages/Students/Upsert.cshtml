@@ -1,0 +1,70 @@
+﻿@page
+@model Nursery.Pages.Students.UpsertModel
+@{
+    ViewData["Title"] = "Upsert";
+}
+
+<h1>@(Model.Student.Id!=0? "Update" : "Add new") Student</h1>
+
+<div class="border container p-3">
+    <form method="post">
+        @if (Model.Student.Id!=0)
+        {
+            <input type="hidden" asp-for="Student.Id" />
+        }
+
+        <div class="form-group row ">
+            <div class="col-2 ">
+                <label asp-for="Student.Name">
+                </label>
+            </div>
+            <div class="col-6 ">
+                <input class="form-control" asp-for="Student.Name">
+            </div>
+            <span class="text-danger" asp-validation-for="Student.Name"></span>
+        </div>
+        <div class="form-group row ">
+            <div class="col-2 ">
+                <label asp-for="Student.Phone">
+                </label>
+            </div>
+            <div class="col-6 ">
+                <input type="number" class="form-control" asp-for="Student.Phone">
+            </div>
+            <span class="text-danger" asp-validation-for="Student.Phone"></span>
+        </div>
+        <div class="form-group row ">
+            <div class="col-2 ">
+                <label asp-for="Student.Address">
+                </label>
+            </div>
+            <div class="col-6 ">
+                <input class="form-control" asp-for="Student.Address">
+            </div>
+            <span class="text-danger" asp-validation-for="Student.Address"></span>
+        </div>
+        <div class="form-group row ">
+            <div class="col-3 offset-2 ">
+                @if (Model.Student.Id != 0)
+                {
+                    <input type="submit" value="Update" class="btn form-control btn-success text-light ">
+                }
+                else
+                {
+                    <input type="submit" value="Add" class="btn form-control btn-success text-light ">
+                }
+
+            </div>
+            <div class="col-3 ">
+                <a asp-page="Index" class="btn btn-warning form-control text-light">
+                    Back to list
+                </a>
+            </div>
+        </div>
+    </form>
+</div>
+
+@section Scripts
+{
+    <partial name="_ValidationScriptsPartial" />
+}

@@ -1,0 +1,79 @@
+﻿@page
+@model Nursery.Pages.Students.IndexModel
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Students</h1>
+
+<br />
+
+<div class="container row p-0 m-0">
+    <div class="col-9">
+        <h2 class="text-info"> Students List</h2>
+    </div>
+    <div class="col-3">
+        <a asp-page="Upsert" class="btn btn-info form-control text-light">Add New Student</a>
+    </div>
+</div>
+
+@*<div class="col-12 border p-3 mt-3">
+    <form method="post">
+        @if(Model.students.Count()>0)
+        {
+            <table class="table table-striped border">
+                <tr class="table-secondary ">
+                    <th>
+                        <label asp-for="students.FirstOrDefault().Name"></label>
+                    </th>
+                    <th>
+                        <label asp-for="students.FirstOrDefault().Phone"></label>
+                    </th>
+                    <th>
+                    </th>
+                </tr>
+                @foreach (var item in Model.students )
+                {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(Name => item.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(Name => item.Phone)
+                    </td>
+                    <td>
+                        <a asp-page="Edit" asp-route-id="@item.Id" class="btn btn-primary text-light ">Edit</a>
+                        <button asp-page-handler="Delete" asp-route-id="@item.Id" onclick="return confirm('Are you sure to delete this student data')" class="btn btn-danger text-light ">Delete</button>
+                    </td>
+                </tr>
+                }
+            </table>
+        }
+        else
+        {
+            <p>No Students yet  </p>
+        }
+    </form>
+</div>*@
+
+@*<div class="col-12" style="text-align:center">
+    <br />
+    <span class="h3 text-info">OR</span>
+    <br /><br />
+</div>*@
+<div class="col-12 border p-3 ">
+    <table id="DT_load" class="table table-striped table-bordered " style="width:100%">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Address</th>
+                <th>Parent's Phone</th>
+                <th></th>
+            </tr>
+        </thead>
+    </table>
+</div>
+
+@section Scripts{ 
+    <script src="~/js/StudentList.js"></script>
+}
